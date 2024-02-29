@@ -19,7 +19,7 @@
                                 <p class="card-text">{{$comic->type}}</p>
                                 <p class="card-text">Artists: {{$comic->artists}}</p>
                                 <p class="card-text">Writers: {{$comic->writers}}</p>
-                                <a href="#" class="btn btn-primary">SHOW</a>
+                                <a href="{{route ('comics.show', ['comic' => $comic->id])}}" class="btn btn-primary">SHOW</a>
                             </div>
                         </div>
                     </div>
