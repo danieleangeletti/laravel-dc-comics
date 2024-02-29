@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,6 +12,15 @@ return new class extends Migration
     {
         Schema::create('comics', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 256);
+            $table->string('description', 1024);
+            $table->string('thumb', 1024);
+            $table->string('price', 32);
+            $table->string('series', 256);
+            $table->date('sale_date');
+            $table->string('type', 64);
+            $table->string('artists', 512);
+            $table->string('writers', 512);
             $table->timestamps();
         });
     }
