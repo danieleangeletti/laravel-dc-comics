@@ -42,7 +42,7 @@
 
             <div class="mb-3">
                 <label for="type" class="form-label">Type</label>
-                <input type="text" class="form-control" id="type" name="tyoe" placeholder="Insert type..." maxlength="64">
+                <input type="text" class="form-control" id="type" name="type" placeholder="Insert type..." maxlength="64">
             </div>
 
             <div class="mb-3">
