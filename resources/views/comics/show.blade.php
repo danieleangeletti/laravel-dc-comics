@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
-@section('page-title', 'Home')
+@section('page-title', $comic->title)
 
 @section('main-content')
     <main>
         <div class="container">
+        <a href="{{route ('comics.index')}}" class="btn btn-primary mt-3 mb-3">GO COMICS INDEX</a>
             <div class="card" style="width: 18rem;">
                 <img src="{{$comic->thumb}}" class="card-img-top" alt="...">
                 <div class="card-body">
