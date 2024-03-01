@@ -22,6 +22,13 @@
                                 <p class="card-text">Writers: {{substr($comic->writers, 0, 40)}}...</p>
                                 <a href="{{route ('comics.show', ['comic' => $comic->id])}}" class="btn btn-primary">SHOW</a>
                                 <a href="{{route ('comics.edit', ['comic' => $comic->id])}}" class="btn btn-warning">EDIT</a>
+                                <form action="{{route ('comics.destroy', ['comic' => $comic->id])}}" method="POST" class="d-inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">
+                                        DELETE
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
