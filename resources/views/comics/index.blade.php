@@ -13,14 +13,15 @@
                             <img src="{{$comic->thumb}}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{$comic->title}}</h5>
-                                <p class="card-text">{{$comic->description}}</p>
+                                <p class="card-text">{{substr($comic->description, 0, 40)}}...</p>
                                 <p class="card-text">{{$comic->price}}</p>
                                 <p class="card-text">{{$comic->series}}</p>
                                 <p class="card-text">{{$comic->sale_date}}</p>
                                 <p class="card-text">{{$comic->type}}</p>
-                                <p class="card-text">Artists: {{$comic->artists}}</p>
-                                <p class="card-text">Writers: {{$comic->writers}}</p>
+                                <p class="card-text">Artists: {{substr($comic->artists, 0, 40)}}...</p>
+                                <p class="card-text">Writers: {{substr($comic->writers, 0, 40)}}...</p>
                                 <a href="{{route ('comics.show', ['comic' => $comic->id])}}" class="btn btn-primary">SHOW</a>
+                                <a href="{{route ('comics.edit', ['comic' => $comic->id])}}" class="btn btn-warning">EDIT</a>
                             </div>
                         </div>
                     </div>
