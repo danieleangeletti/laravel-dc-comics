@@ -31,17 +31,19 @@ class ComicController extends Controller
     {
         $comic_data = $request->all();
 
-        $comic = new Comic();
-        $comic->title = $comic_data['title'];
-        $comic->description = $comic_data['description'];
-        $comic->thumb = $comic_data['thumb'];
-        $comic->price = $comic_data['price'];
-        $comic->series = $comic_data['series'];
-        $comic->sale_date = $comic_data['sale_date'];
-        $comic->type = $comic_data['type'];
-        $comic->artists = $comic_data['artists'];
-        $comic->writers = $comic_data['writers'];
-        $comic->save();
+        $comic = Comic::create($comic_data);
+
+        // $comic = new Comic();
+        // $comic->title = $comic_data['title'];
+        // $comic->description = $comic_data['description'];
+        // $comic->thumb = $comic_data['thumb'];
+        // $comic->price = $comic_data['price'];
+        // $comic->series = $comic_data['series'];
+        // $comic->sale_date = $comic_data['sale_date'];
+        // $comic->type = $comic_data['type'];
+        // $comic->artists = $comic_data['artists'];
+        // $comic->writers = $comic_data['writers'];
+        // $comic->save();
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
 
@@ -73,16 +75,7 @@ class ComicController extends Controller
         $comic_data = $request->all();
 
         $comic = Comic::findOrFail($id);
-        $comic->title = $comic_data['title'];
-        $comic->description = $comic_data['description'];
-        $comic->thumb = $comic_data['thumb'];
-        $comic->price = $comic_data['price'];
-        $comic->series = $comic_data['series'];
-        $comic->sale_date = $comic_data['sale_date'];
-        $comic->type = $comic_data['type'];
-        $comic->artists = $comic_data['artists'];
-        $comic->writers = $comic_data['writers'];
-        $comic->save();
+        $comic->update($comic_data);
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
     }
