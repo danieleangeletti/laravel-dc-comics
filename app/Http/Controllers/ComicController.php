@@ -29,21 +29,20 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $comic_data = $request->all();
+        $validated_data = $request->validate([
+            'title' => 'required|max:256',
+            'description' => 'required|max:1024',
+            'thumb' => 'nullable|max:1024',
+            'price' => 'required|max:32',
+            'series' => 'required|max:256',
+            'sale_date' => 'required|date',
+            'type' => 'nullable|max:64',
+            'artists' => 'required|max:512',
+            'writers' => 'required|max:512',
 
-        $comic = Comic::create($comic_data);
+        ]);
 
-        // $comic = new Comic();
-        // $comic->title = $comic_data['title'];
-        // $comic->description = $comic_data['description'];
-        // $comic->thumb = $comic_data['thumb'];
-        // $comic->price = $comic_data['price'];
-        // $comic->series = $comic_data['series'];
-        // $comic->sale_date = $comic_data['sale_date'];
-        // $comic->type = $comic_data['type'];
-        // $comic->artists = $comic_data['artists'];
-        // $comic->writers = $comic_data['writers'];
-        // $comic->save();
+        $comic = Comic::create($validated_data);
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
 
@@ -72,10 +71,21 @@ class ComicController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $comic_data = $request->all();
+        $validated_data = $request->validate([
+            'title' => 'required|max:256',
+            'description' => 'required|max:1024',
+            'thumb' => 'nullable|max:1024',
+            'price' => 'required|max:32',
+            'series' => 'required|max:256',
+            'sale_date' => 'required|date',
+            'type' => 'nullable|max:64',
+            'artists' => 'required|max:512',
+            'writers' => 'required|max:512',
+
+        ]);
 
         $comic = Comic::findOrFail($id);
-        $comic->update($comic_data);
+        $comic->update($validated_data);
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
     }
