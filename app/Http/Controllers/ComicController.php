@@ -32,7 +32,7 @@ class ComicController extends Controller
         $validated_data = $request->validate([
             'title' => 'required|max:256',
             'description' => 'required|max:1024',
-            'thumb' => 'nullable|max:1024',
+            'thumb' => 'nullable|url|max:1024',
             'price' => 'required|max:32',
             'series' => 'required|max:256',
             'sale_date' => 'required|date',
@@ -40,6 +40,24 @@ class ComicController extends Controller
             'artists' => 'required|max:512',
             'writers' => 'required|max:512',
 
+        ], [
+            'title.required' => 'Devi inserire il titolo',
+            'title.max' => 'Il titolo è troppo lungo',
+            'description.required' => 'Devi inserire la descrizione',
+            'description.max' => 'La descrizione è troppo lunga',
+            'thumb.url' => 'Devi inserire un URL',
+            'thumb.max' => 'Questo URL è troppo lungo',
+            'price.required' => 'Devi inserire il prezzo',
+            'price.max' => 'Il prezzo è troppo grande',
+            'series.required' => 'Devi inserire la serie',
+            'series.max' => 'La serie è troppo lunga',
+            'sale_date.required' => 'Devi inserire la data',
+            'sale_date.date' => 'Il formato deve essere data',
+            'type.max' => 'Il tipo è troppo lungo',
+            'artists.required' => 'Devi inserire gli artisti',
+            'artists.max' => 'Hai inserito troppi artisti',
+            'writers.required' => 'Devi inserire gli scrittori',
+            'writers.max' => 'Hai inserito troppi scrittori'
         ]);
 
         $comic = Comic::create($validated_data);
@@ -82,6 +100,24 @@ class ComicController extends Controller
             'artists' => 'required|max:512',
             'writers' => 'required|max:512',
 
+        ], [
+            'title.required' => 'Devi inserire il titolo',
+            'title.max' => 'Il titolo è troppo lungo',
+            'description.required' => 'Devi inserire la descrizione',
+            'description.max' => 'La descrizione è troppo lunga',
+            'thumb.url' => 'Devi inserire un URL',
+            'thumb.max' => 'Questo URL è troppo lungo',
+            'price.required' => 'Devi inserire il prezzo',
+            'price.max' => 'Il prezzo è troppo grande',
+            'series.required' => 'Devi inserire la serie',
+            'series.max' => 'La serie è troppo lunga',
+            'sale_date.required' => 'Devi inserire la data',
+            'sale_date.date' => 'Il formato deve essere data',
+            'type.max' => 'Il tipo è troppo lungo',
+            'artists.required' => 'Devi inserire gli artisti',
+            'artists.max' => 'Hai inserito troppi artisti',
+            'writers.required' => 'Devi inserire gli scrittori',
+            'writers.max' => 'Hai inserito troppi scrittori'
         ]);
 
         $comic = Comic::findOrFail($id);
